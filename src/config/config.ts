@@ -3,4 +3,5 @@ export const config = {
 
   listingUrl:
     "https://supplier.meesho.com/panel/v3/new/cataloging/tfg62/catalogs/single/select-category",
+  dashboardUrl: "https://supplier.meesho.com/panel/v3/new/growth/tfg62/home"
 };

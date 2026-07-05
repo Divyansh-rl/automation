@@ -1,6 +1,7 @@
 import { Page } from "playwright";
 import { selectSavedCategory } from "./category.js";
 import { fillProductDetails } from "./fillProductDetails.js";
+import { openNewCatalog } from "./navigation.js";
 import {
   openProductPage,
   saveAndGoBack,
@@ -12,6 +13,8 @@ import {
 
 
 export async function runCatalogFlow(page: Page) {
+  await openNewCatalog(page);
+  
   const catalog = {
   gst: "5",
   hsn: "6208",
@@ -69,19 +72,19 @@ export async function runCatalogFlow(page: Page) {
 const variants = [
   {
     color: "Beige",
-    styleCode: "BUTTERFLY-REGULAR-BEIGE@013",
+    styleCode: "BUTTERFLY-REGULAR-BEIGE@014",
   },
   {
     color: "Rust",
-    styleCode: "BUTTERFLY-REGULAR-RUST@013",
+    styleCode: "BUTTERFLY-REGULAR-RUST@014",
   },
   {
     color: "Blue",
-    styleCode: "BUTTERFLY-REGULAR-BLUE@013",
+    styleCode: "BUTTERFLY-REGULAR-BLUE@014",
   },
   {
     color: "Green",
-    styleCode: "BUTTERFLY-REGULAR-GREEN@013",
+    styleCode: "BUTTERFLY-REGULAR-GREEN@014",
   },
 ];
 

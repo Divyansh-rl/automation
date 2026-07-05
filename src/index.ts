@@ -6,20 +6,26 @@ import { runCatalogFlow } from "./catalog/flow.js";
 async function main() {
   const { page } = await connectBrowser();
 
-  logger.info("Opening catalog page...");
+  logger.info("Opening supplier dashboard...");
 
-  await page.goto(config.listingUrl, {
+  await page.goto(config.dashboardUrl, {
     waitUntil: "domcontentloaded",
   });
 
-  logger.info("Waiting for category page to load...");
+  logger.info("Waiting for dashboard to load...");
 
-  await page.getByTestId("your-categories-list").waitFor({
-    state: "visible",
-    timeout: 30000,
-  });
+  await page
+    .locator("div")
+    .filter({
+      hasText: /^Catalog Uploads$/,
+    })
+    .nth(1)
+    .waitFor({
+      state: "visible",
+      timeout: 30000,
+    });
 
-  logger.success("Catalog page opened.");
+  logger.success("Dashboard opened.");
 
   await runCatalogFlow(page);
 
